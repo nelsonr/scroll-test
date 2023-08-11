@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scroll Test</title>
+    <style>
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            background-color: lightskyblue;
+            color: #FFF;
+            font-family: sans-serif;
+            text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+        }
+
+        .scroll {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            font-size: 3.5em;
+        }
+
+        .scroll-direction--up {
+            background-color: lightcoral;
+        }
+
+        .scroll-direction--down {
+            background-color: lightgreen;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="scroll">
+        <div class="scroll-direction">Move the scroll wheel</div>
+    </div>
+
+    <script>
+        const scrollDirectionEl = document.querySelector(".scroll-direction");
+        document.body.addEventListener("wheel", (ev) => {
+            scrollDirectionEl.textContent = ev.deltaY;
+
+            if (ev.deltaY < 0) {
+                document.body.classList.remove("scroll-direction--down");
+                document.body.classList.add("scroll-direction--up");
+            } else {
+                document.body.classList.remove("scroll-direction--up");
+                document.body.classList.add("scroll-direction--down");
+            }
+        });
+    </script>
+</body>
+
+</html>
